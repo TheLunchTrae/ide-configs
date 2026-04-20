@@ -6,6 +6,8 @@ Personal backups of IDE configuration files, one folder per IDE.
 
 - [`phpstorm/`](./phpstorm) — PhpStorm JVM options and IDE properties, tuned
   for large monorepos.
+- [`rider/`](./rider) — Rider JVM options and IDE properties, seeded from
+  `phpstorm/` and tuned for large .NET solutions (Rider 2026.1, Windows 11).
 
 Each IDE folder has its own `README.md` documenting install locations and
 any per-file notes.
