@@ -64,7 +64,3 @@ Windows-only and harmless elsewhere.
 - Heap is sized 4 GB min / 16 GB max. Machines with <16 GB RAM should lower
   `-Xmx` before applying. Large .NET solutions often benefit from the
   higher max.
-- `build.parallel.compilation.threads=8` assumes an 8+ core CPU. Adjust to
-  match the target machine. Note: this property controls the IntelliJ JPS
-  Java build process and may not affect Rider's MSBuild integration —
-  included here for parity with the `phpstorm/` config.
