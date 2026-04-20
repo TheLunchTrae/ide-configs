@@ -1,0 +1,10 @@
+-Xms4g
+-Xmx16g
+-XX:+UseG1GC
+-XX:ReservedCodeCacheSize=512m
+-XX:+UseStringDeduplication
+-XX:+ParallelRefProcEnabled
+-Dsun.awt.keepWorkingSetOnMinimize=true
+-Dfile.encoding=UTF-8
+-Dawt.useSystemAAFontSettings=lcd
+-server
