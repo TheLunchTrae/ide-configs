@@ -7,4 +7,3 @@
 -Dsun.awt.keepWorkingSetOnMinimize=true
 -Dfile.encoding=UTF-8
 -Dawt.useSystemAAFontSettings=lcd
--server
