@@ -24,7 +24,9 @@ references on top of it.
 - These configs were seeded from `phpstorm/` and share its tuning
   assumptions (large monorepo, 16 GB+ RAM, 8+ cores). Some properties
   carried over from PhpStorm target the IntelliJ JPS Java build process
-  (`compiler.max.heap.size`, `build.parallel.compilation.threads`,
-  `idea.dynamic.classpath*`) and likely have no effect in Rider, which
-  uses MSBuild for .NET. They're kept for parity; flag them during any
-  cleanup pass.
+  and likely have no effect in Rider, which uses MSBuild for .NET. The
+  JPS build-process keys (`compiler.max.heap.size`,
+  `build.parallel.compilation.threads`) have already been dropped from
+  `idea.properties`. `idea.dynamic.classpath*` is still present and is
+  similarly inert under Rider — kept for parity with `phpstorm/`; flag
+  it during any cleanup pass.
