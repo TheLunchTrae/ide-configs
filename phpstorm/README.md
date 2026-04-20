@@ -2,6 +2,8 @@
 
 Backups of PhpStorm JVM and IDE-level configuration.
 
+Captured against **PhpStorm 2026.1** on **Windows 11 64-bit**.
+
 ## Files
 
 - **`phpstorm64.exe.vmoptions`** — JVM options (heap, GC, code cache, font
