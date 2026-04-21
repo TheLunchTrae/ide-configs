@@ -1,9 +1,40 @@
--Xms4g
--Xmx16g
+# Overrides only. Bundled defaults from JBR 21 are merged automatically
+# since 2020.2 -- see the reference block at the bottom. Edit via
+# Help | Edit Custom VM Options.
+#
+# NOTE: This file tunes the JVM FRONTEND only. The ReSharper backend
+# (Rider.Backend.exe) is a separate .NET process with its own memory
+# profile; raising -Xmx above ~6g gives almost no benefit and steals
+# RAM from MSBuild / Roslyn / Docker.
+-Xms3g
+-Xmx6g
 -XX:+UseG1GC
 -XX:ReservedCodeCacheSize=512m
--XX:+UseStringDeduplication
--XX:+ParallelRefProcEnabled
--Dsun.awt.keepWorkingSetOnMinimize=true
 -Dfile.encoding=UTF-8
--Dawt.useSystemAAFontSettings=lcd
+
+# --- JBR 21 bundled defaults (commented reference; do not uncomment) ---
+# Listed here so drift is visible if JetBrains changes a default in a
+# future release. If any of these ever needs a non-default value, move
+# that single line above this block.
+#
+# -XX:+UseG1GC                                  (GC)
+# -XX:CICompilerCount=2                         (JIT threads)
+# -XX:SoftRefLRUPolicyMSPerMB=50                (soft-ref aging)
+# -XX:ReservedCodeCacheSize=512m                (JIT code cache)
+# -XX:+HeapDumpOnOutOfMemoryError               (diagnostics)
+# -XX:HeapDumpPath=${user.home}/java_error_in_rider.hprof
+# -XX:ErrorFile=${user.home}/java_error_in_rider_%p.log
+# -XX:-OmitStackTraceInFastThrow                (full stacks)
+# -ea                                           (assertions)
+# -Dfile.encoding=UTF-8                         (JEP 400 default anyway)
+# -Dsun.io.useCanonCaches=false                 (platform stability)
+# -Djdk.attach.allowAttachSelf=true
+# -Djdk.http.auth.tunneling.disabledSchemes=""
+# -Djdk.module.illegalAccess.silent=true
+# -Dkotlinx.coroutines.debug=off
+#
+# --- Removed in this revision ---
+# -XX:+UseStringDeduplication           (marginal on IDE workloads)
+# -XX:+ParallelRefProcEnabled           (already on by default in JBR 21)
+# -Dsun.awt.keepWorkingSetOnMinimize=true   (2015-era Windows trick)
+# -Dawt.useSystemAAFontSettings=lcd          (IDE handles font AA itself)
