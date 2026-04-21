@@ -27,9 +27,3 @@
 # -Djdk.http.auth.tunneling.disabledSchemes=""
 # -Djdk.module.illegalAccess.silent=true
 # -Dkotlinx.coroutines.debug=off
-#
-# --- Removed in this revision ---
-# -XX:+UseStringDeduplication           (marginal on IDE workloads)
-# -XX:+ParallelRefProcEnabled           (already on by default in JBR 21)
-# -Dsun.awt.keepWorkingSetOnMinimize=true   (2015-era Windows trick)
-# -Dawt.useSystemAAFontSettings=lcd          (IDE handles font AA itself)
