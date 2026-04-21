@@ -61,6 +61,15 @@ Windows-only and harmless elsewhere.
   `${user.home}/.Rider/system` and `${user.home}/.Rider/log`. This moves
   caches and logs **out of** the default JetBrains location — intentional,
   but handy to remember when debugging "where did my indexes go?"
-- Heap is sized 4 GB min / 16 GB max. Machines with <16 GB RAM should lower
-  `-Xmx` before applying. Large .NET solutions often benefit from the
-  higher max.
+- Heap is sized 3 GB min / 6 GB max. The JVM heap tunes the *frontend*
+  only. Rider's heavy lifting runs in the ReSharper backend
+  (`Rider.Backend.exe`), a separate .NET process with its own memory
+  profile — raising `-Xmx` above ~6 GB gives almost no benefit and
+  steals RAM from MSBuild / Roslyn / Docker.
+- If Rider feels slow, start with **Settings → Editor → Inspection
+  Settings** — disable *Monitor warnings* and *Enable computationally
+  expensive inspections* before touching vmoptions. The 300 KB
+  design-time analysis cap lives in your solution's `.DotSettings` as
+  `AnalysisFileSizeThreshold`, not here.
+- `caches.indexerThreadsCount` is left commented with a `TODO` — set
+  it to `physical_cores - 1` on the target machine before applying.

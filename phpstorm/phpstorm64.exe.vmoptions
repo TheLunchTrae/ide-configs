@@ -1,9 +1,29 @@
+# Overrides only. Bundled defaults from JBR 21 are merged automatically
+# since 2020.2 -- see the reference block at the bottom. Edit via
+# Help | Edit Custom VM Options.
 -Xms4g
--Xmx16g
+-Xmx8g
 -XX:+UseG1GC
 -XX:ReservedCodeCacheSize=512m
--XX:+UseStringDeduplication
--XX:+ParallelRefProcEnabled
--Dsun.awt.keepWorkingSetOnMinimize=true
 -Dfile.encoding=UTF-8
--Dawt.useSystemAAFontSettings=lcd
+
+# --- JBR 21 bundled defaults (commented reference; do not uncomment) ---
+# Listed here so drift is visible if JetBrains changes a default in a
+# future release. If any of these ever needs a non-default value, move
+# that single line above this block.
+#
+# -XX:+UseG1GC                                  (GC)
+# -XX:CICompilerCount=2                         (JIT threads)
+# -XX:SoftRefLRUPolicyMSPerMB=50                (soft-ref aging)
+# -XX:ReservedCodeCacheSize=512m                (JIT code cache)
+# -XX:+HeapDumpOnOutOfMemoryError               (diagnostics)
+# -XX:HeapDumpPath=${user.home}/java_error_in_phpstorm.hprof
+# -XX:ErrorFile=${user.home}/java_error_in_phpstorm_%p.log
+# -XX:-OmitStackTraceInFastThrow                (full stacks)
+# -ea                                           (assertions)
+# -Dfile.encoding=UTF-8                         (JEP 400 default anyway)
+# -Dsun.io.useCanonCaches=false                 (platform stability)
+# -Djdk.attach.allowAttachSelf=true
+# -Djdk.http.auth.tunneling.disabledSchemes=""
+# -Djdk.module.illegalAccess.silent=true
+# -Dkotlinx.coroutines.debug=off

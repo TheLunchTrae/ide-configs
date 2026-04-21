@@ -47,7 +47,13 @@ cross-platform, rename/duplicate as needed:
   `${user.home}/.PhpStorm/system` and `${user.home}/.PhpStorm/log`. This
   moves caches and logs **out of** the default JetBrains location — intentional,
   but handy to remember when debugging "where did my indexes go?"
-- Heap is sized 4 GB min / 16 GB max. Machines with <16 GB RAM should lower
-  `-Xmx` before applying.
+- Heap is sized 4 GB min / 8 GB max (aggressive baseline for a
+  multi-million-LOC monorepo on a 64 GB Windows 11 / JBR 21 host).
+  Raise `-Xmx` only if the Memory Indicator shows post-GC usage
+  sustained above 80%. Larger heaps hurt more than they help — full-GC
+  pauses scale with heap and every extra GB is a GB stolen from the
+  Windows file cache.
 - `build.parallel.compilation.threads=8` assumes an 8+ core CPU. Adjust to
   match the target machine.
+- `caches.indexerThreadsCount` is left commented with a `TODO` — set
+  it to `physical_cores - 1` on the target machine before applying.

@@ -52,30 +52,6 @@ for Windows / macOS / Linux.
    across platforms, propose symlinks or duplicated files — do not silently
    rename.
 
-## Required: Secret Scan Before Every Commit
-
-IDE configs are a known hot-spot for leaked credentials. Before committing
-**any** new or modified config file, Claude must:
-
-1. **Scan the diff** (and any new files in full) for:
-   - API tokens / bearer tokens (`token`, `api_key`, `apikey`, `auth`, `bearer`)
-   - Passwords and secrets (`password`, `passwd`, `secret`, `credential`)
-   - Private keys (`BEGIN RSA PRIVATE KEY`, `BEGIN OPENSSH PRIVATE KEY`,
-     `BEGIN PGP PRIVATE KEY`)
-   - SSH keys and signing keys
-   - License server URLs (JetBrains/Resharper/etc.)
-   - DB connection strings with embedded passwords (`://user:pass@host`)
-   - GitHub / GitLab / Jira / Slack tokens (`ghp_`, `gho_`, `xoxb-`, etc.)
-   - AWS / GCP / Azure keys (`AKIA`, `ASIA`, service-account JSON)
-2. **Known hot-spot files** to inspect extra carefully:
-   - `options/*.xml` under JetBrains config dirs
-   - `dataSources.local.xml`, `dataSources.xml`
-   - Deployment / FTP / SSH configs
-   - Any file mentioning GitHub, Jira, Slack, Bitbucket integrations
-3. **Report suspect lines to the user** with file + line number and ask for
-   explicit confirmation before the commit lands. If nothing suspect is
-   found, say so briefly so the user knows the scan ran.
-
 ## Commit Style
 
 Short imperative subjects, scoped by IDE directory:
@@ -83,7 +59,7 @@ Short imperative subjects, scoped by IDE directory:
 - `phpstorm: bump heap to 16g`
 - `phpstorm: add codeStyles/Project.xml`
 - `vscode: add keybindings.json`
-- `repo: tighten CLAUDE.md secret rules`
+- `repo: refine CLAUDE.md editing rules`
 
 **Do not append Claude Code session links** (or any `https://claude.ai/code/...`
 footer) to commit messages or PR bodies in this repo. Keep messages clean and
