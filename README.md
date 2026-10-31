@@ -18,13 +18,3 @@ any per-file notes.
 2. Follow the `README.md` in that folder to find the on-disk install path
    for your OS.
 3. Copy the relevant file(s) into place and restart the IDE.
-
-## Adding a New IDE
-
-1. Create a sibling folder named after the vendor (e.g. `vscode/`, `zed/`).
-2. Add the config file(s) verbatim — no reformatting.
-3. Write a short `README.md` covering what the files do and where they live
-   on Windows / macOS / Linux.
-
-See [`CLAUDE.md`](./CLAUDE.md) for conventions when Claude Code is helping
-edit this repo.
