@@ -18,4 +18,3 @@ any per-file notes.
 2. Follow the `README.md` in that folder to find the on-disk install path
    for your OS.
 3. Copy the relevant file(s) into place and restart the IDE.
-
