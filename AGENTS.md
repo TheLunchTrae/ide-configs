@@ -40,6 +40,9 @@ When adding a new IDE, create a sibling folder (e.g. `vscode/`, `intellij/`,
 for Windows / macOS / Linux. Scoped agent guidance for that IDE goes in its
 own `AGENTS.md`, with a `CLAUDE.md` containing only `@AGENTS.md`.
 
+Before editing files under an IDE folder, read that folder's `AGENTS.md`;
+it adds rules on top of this file.
+
 ## Rules for Editing Configs
 
 1. **Preserve fidelity.** Config files are both machine-read (by the IDE) and
