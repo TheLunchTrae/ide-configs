@@ -1,29 +1,40 @@
-# Overrides only. Bundled defaults from JBR 21 are merged automatically
-# since 2020.2 -- see the reference block at the bottom. Edit via
+# Overrides only. The IDE merges this file with its bundled defaults
+# (since 2020.2) -- see the reference block at the bottom. Edit via
 # Help | Edit Custom VM Options.
 -Xms4g
 -Xmx8g
--XX:+UseG1GC
--XX:ReservedCodeCacheSize=512m
--Dfile.encoding=UTF-8
+# Compact object headers (JEP 519, a product flag since JDK 25): smaller
+# objects, so a lower live heap. PhpStorm 2026.1 runs on JBR 25 but only
+# turns this on by default from 2026.2; drop this line once on 2026.2+.
+-XX:+UseCompactObjectHeaders
 
-# --- JBR 21 bundled defaults (commented reference; do not uncomment) ---
+# --- 2026.1 platform defaults on JBR 25 (commented reference; do not uncomment) ---
 # Listed here so drift is visible if JetBrains changes a default in a
 # future release. If any of these ever needs a non-default value, move
-# that single line above this block.
+# that single line above this block. Products may append a few lines of
+# their own. G1 is the JVM's own default collector and UTF-8 the default
+# file encoding (JEP 400), so neither needs a line.
 #
-# -XX:+UseG1GC                                  (GC)
-# -XX:CICompilerCount=2                         (JIT threads)
-# -XX:SoftRefLRUPolicyMSPerMB=50                (soft-ref aging)
+# -Xms / -Xmx                                  (product-specific; overridden above)
+# -XX:JbrShrinkingGcMaxHeapFreeRatio=40         (idle heap shrinking)
 # -XX:ReservedCodeCacheSize=512m                (JIT code cache)
 # -XX:+HeapDumpOnOutOfMemoryError               (diagnostics)
-# -XX:HeapDumpPath=${user.home}/java_error_in_phpstorm.hprof
-# -XX:ErrorFile=${user.home}/java_error_in_phpstorm_%p.log
 # -XX:-OmitStackTraceInFastThrow                (full stacks)
+# -XX:CICompilerCount=2                         (JIT threads)
+# -XX:+IgnoreUnrecognizedVMOptions              (survives stale user flags)
+# -XX:+UnlockDiagnosticVMOptions
+# -XX:TieredOldPercentage=100000
 # -ea                                           (assertions)
-# -Dfile.encoding=UTF-8                         (JEP 400 default anyway)
-# -Dsun.io.useCanonCaches=false                 (platform stability)
-# -Djdk.attach.allowAttachSelf=true
+# -Dsun.io.useCanonCaches=false
+# -Dsun.java2d.metal=true                       (macOS rendering)
+# -Djbr.catch.SIGABRT=true
 # -Djdk.http.auth.tunneling.disabledSchemes=""
+# -Djdk.attach.allowAttachSelf=true
 # -Djdk.module.illegalAccess.silent=true
+# -Djdk.nio.maxCachedBufferSize=2097152
+# -Djava.util.zip.use.nio.for.zip.file.access=true
 # -Dkotlinx.coroutines.debug=off
+# -Dskiko.rendering.useScreenMenuBar=false
+#
+# Added in 2026.2: -XX:+UseCompactObjectHeaders and
+# --sun-misc-unsafe-memory-access=allow
