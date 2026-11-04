@@ -28,6 +28,6 @@ references on top of it.
   JPS build-process keys (`compiler.max.heap.size`,
   `build.parallel.compilation.threads`) have been dropped from
   `idea.properties` for that reason. `idea.dynamic.classpath` stays: it
-  shortens command lines for any JVM the IDE starts (e.g. JDBC drivers),
+  shortens command lines for JVMs the IDE or its plugins start,
   so it can't be ruled inert. `idea.dynamic.classpath.jar` was dropped:
   the IDE reads it from saved settings, not from `idea.properties`.
