@@ -7,12 +7,11 @@ Captured against **Rider 2026.1** on **Windows 11 64-bit**.
 
 ## Files
 
-- **`rider64.exe.vmoptions`** — JVM options (heap, GC, code cache, font
-  rendering). Filename is the Windows-specific form.
+- **`rider64.exe.vmoptions`** — JVM options (frontend heap, compact object
+  headers). Filename is the Windows-specific form.
 - **`idea.properties`** — Rider runtime properties, tuned for large
-  monorepos (bigger intellisense/content-load limits, dynamic classpath for
-  long Windows classpaths, custom index/log paths, network timeouts, build
-  parallelism).
+  monorepos (bigger intellisense/content-load limits, custom index/log
+  paths, UI tweaks).
 
 ## Install Locations
 
@@ -42,15 +41,9 @@ cross-platform, rename/duplicate as needed:
 | macOS   | `rider.vmoptions`        |
 | Linux   | `rider64.vmoptions`      |
 
-Two lines in this vmoptions file are Windows-only and should be dropped from
-macOS/Linux copies:
-
-- `-Dsun.awt.keepWorkingSetOnMinimize=true`
-- `-Dawt.useSystemAAFontSettings=lcd` (Windows subpixel AA; macOS ignores,
-  Linux depends on fontconfig)
-
-The `ide.win.frame.decoration=true` line in `idea.properties` is likewise
-Windows-only and harmless elsewhere.
+The vmoptions file has no Windows-only lines, so it copies as is. The
+`ide.win.frame.decoration=true` line in `idea.properties` is Windows-only
+and harmless elsewhere.
 
 ## Notes
 
@@ -71,5 +64,6 @@ Windows-only and harmless elsewhere.
   expensive inspections* before touching vmoptions. The 300 KB
   design-time analysis cap lives in your solution's `.DotSettings` as
   `AnalysisFileSizeThreshold`, not here.
-- `caches.indexerThreadsCount` is left commented with a `TODO` — set
-  it to `physical_cores - 1` on the target machine before applying.
+- `caches.indexerThreadsCount` is deliberately unset. The IDE already
+  indexes on (logical CPUs − 1) threads, so only set it to cap indexing
+  below that.
