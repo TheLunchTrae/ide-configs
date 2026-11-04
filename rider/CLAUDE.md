@@ -26,6 +26,8 @@ references on top of it.
   carried over from PhpStorm target the IntelliJ JPS Java build process
   and likely have no effect in Rider, which uses MSBuild for .NET. The
   JPS build-process keys (`compiler.max.heap.size`,
-  `build.parallel.compilation.threads`) and `idea.dynamic.classpath*`
-  (Java run-configuration classpath handling) have been dropped from
-  `idea.properties` for that reason, in both IDE folders.
+  `build.parallel.compilation.threads`) have been dropped from
+  `idea.properties` for that reason. `idea.dynamic.classpath` stays: it
+  shortens command lines for any JVM the IDE starts (e.g. JDBC drivers),
+  so it can't be ruled inert. `idea.dynamic.classpath.jar` was dropped:
+  the IDE reads it from saved settings, not from `idea.properties`.

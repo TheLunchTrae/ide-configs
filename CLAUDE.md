@@ -29,6 +29,7 @@ One top-level directory per IDE, named to match the vendor's own naming:
 Current IDEs:
 
 - `phpstorm/` — PhpStorm JVM and IDE properties (large-monorepo tuning).
+- `rider/` — Rider JVM and IDE properties, seeded from `phpstorm/`.
 
 When adding a new IDE, create a sibling folder (e.g. `vscode/`, `intellij/`,
 `zed/`) with its own `README.md` explaining where each file lives on disk

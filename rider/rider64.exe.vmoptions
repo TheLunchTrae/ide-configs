@@ -40,6 +40,8 @@
 # -Djava.util.zip.use.nio.for.zip.file.access=true
 # -Dkotlinx.coroutines.debug=off
 # -Dskiko.rendering.useScreenMenuBar=false
+# -Djava.nio.file.spi.DefaultFileSystemProvider=com.intellij.platform.core.nio.fs.MultiRoutingFileSystemProvider
+#                                               (multi-routing FS / WSL)
 #
 # Added in 2026.2: -XX:+UseCompactObjectHeaders and
 # --sun-misc-unsafe-memory-access=allow

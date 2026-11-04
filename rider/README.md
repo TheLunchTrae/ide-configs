@@ -10,8 +10,8 @@ Captured against **Rider 2026.1** on **Windows 11 64-bit**.
 - **`rider64.exe.vmoptions`** — JVM options (frontend heap, compact object
   headers). Filename is the Windows-specific form.
 - **`idea.properties`** — Rider runtime properties, tuned for large
-  monorepos (bigger intellisense/content-load limits, custom index/log
-  paths, UI tweaks).
+  monorepos (bigger intellisense/content-load limits, dynamic classpath for
+  long Windows command lines, custom index/log paths, UI tweaks).
 
 ## Install Locations
 

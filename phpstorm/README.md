@@ -9,8 +9,8 @@ Captured against **PhpStorm 2026.1** on **Windows 11 64-bit**.
 - **`phpstorm64.exe.vmoptions`** — JVM options (heap, compact object
   headers). Filename is the Windows-specific form.
 - **`idea.properties`** — PhpStorm runtime properties, tuned for large
-  monorepos (bigger intellisense/content-load limits, custom index/log
-  paths, UI tweaks).
+  monorepos (bigger intellisense/content-load limits, dynamic classpath for
+  long Windows command lines, custom index/log paths, UI tweaks).
 
 ## Install Locations
 
@@ -23,7 +23,7 @@ files override IDE defaults on next start.
 | macOS   | `~/Library/Application Support/JetBrains/PhpStorm<version>/`      |
 | Linux   | `~/.config/JetBrains/PhpStorm<version>/`                          |
 
-Replace `<version>` with the installed release, e.g. `PhpStorm2025.1`.
+Replace `<version>` with the installed release, e.g. `PhpStorm2026.1`.
 
 You can also open these from inside PhpStorm via
 **Help → Edit Custom VM Options…** and **Help → Edit Custom Properties…** —
