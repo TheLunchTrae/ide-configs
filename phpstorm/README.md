@@ -47,7 +47,7 @@ cross-platform, rename/duplicate as needed:
   moves caches and logs **out of** the default JetBrains location — intentional,
   but handy to remember when debugging "where did my indexes go?"
 - Heap is sized 4 GB min / 8 GB max (aggressive baseline for a
-  multi-million-LOC monorepo on a 64 GB Windows 11 host; PhpStorm 2026.1
+  multi-million-LOC monorepo on my 64 GB Windows 11 machine; PhpStorm 2026.1
   runs on JBR 25).
   Raise `-Xmx` only if the Memory Indicator shows post-GC usage
   sustained above 80%. Larger heaps hurt more than they help — full-GC

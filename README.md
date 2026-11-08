@@ -1,6 +1,6 @@
 # ide-configs
 
-Personal backups of IDE configuration files, one folder per IDE.
+My IDE configuration backups, one folder per IDE.
 
 ## Contents
 
